@@ -1,0 +1,236 @@
+/* Bubbles background */
+.ember-bubbles-bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+.ember-bubble {
+  position: absolute;
+  bottom: 4.5rem;
+  border-radius: 50%;
+  opacity: 0.18;
+  background: linear-gradient(135deg, #00d4ff 60%, #1e293b 100%);
+  animation: ember-bubble-rise 10s linear infinite;
+}
+
+/* Individual bubble sizes, positions, and speeds */
+.ember-bubble-1 { left: 10vw; width: 48px; height: 48px; animation-duration: 12s; animation-delay: 0s; bottom: 3rem; }
+.ember-bubble-2 { left: 25vw; width: 32px; height: 32px; animation-duration: 9s; animation-delay: 2s; bottom: 4.2rem; }
+.ember-bubble-3 { left: 40vw; width: 60px; height: 60px; animation-duration: 14s; animation-delay: 1s; bottom: 5.5rem; }
+.ember-bubble-4 { left: 55vw; width: 36px; height: 36px; animation-duration: 10s; animation-delay: 3s; bottom: 3.8rem; }
+.ember-bubble-5 { left: 70vw; width: 28px; height: 28px; animation-duration: 8s; animation-delay: 0.5s; bottom: 6rem; }
+.ember-bubble-6 { left: 85vw; width: 40px; height: 40px; animation-duration: 13s; animation-delay: 2.5s; bottom: 4.7rem; }
+.ember-bubble-7 { left: 15vw; width: 22px; height: 22px; animation-duration: 7s; animation-delay: 1.2s; bottom: 5.2rem; }
+.ember-bubble-8 { left: 35vw; width: 54px; height: 54px; animation-duration: 11s; animation-delay: 2.8s; bottom: 3.5rem; }
+.ember-bubble-9 { left: 60vw; width: 38px; height: 38px; animation-duration: 9.5s; animation-delay: 1.7s; bottom: 4.9rem; }
+.ember-bubble-10 { left: 80vw; width: 26px; height: 26px; animation-duration: 8.5s; animation-delay: 3.3s; bottom: 3.2rem; }
+.ember-bubble-11 { left: 50vw; width: 44px; height: 44px; animation-duration: 12.5s; animation-delay: 0.8s; bottom: 5.7rem; }
+.ember-bubble-12 { left: 65vw; width: 30px; height: 30px; animation-duration: 10.5s; animation-delay: 2.2s; bottom: 4.4rem; }
+
+@keyframes ember-bubble-rise {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.18;
+  }
+  80% {
+    opacity: 0.22;
+  }
+  100% {
+    transform: translateY(-110vh) scale(1.12);
+    opacity: 0;
+  }
+}
+
+/* Background and layout */
+.ember-landing-bg {
+  position: relative;
+  height: 100vh;
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* Even darker blue theme: ultra dark blue center and edges, deep blue sides */
+  background: radial-gradient(circle at 70% 50%, #070d1a 0%, #101a2c 60%, #070d1a 100%);
+  color: #fff;
+  font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, 'Liberation Sans', sans-serif;
+}
+
+/* Header */
+.ember-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2.5rem 2rem 1.5rem 2rem;
+}
+
+.ember-nav {
+  flex: 1;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 0.18em;
+  color: rgba(255,255,255,0.55);
+  font-weight: 600;
+  text-align: center;
+}
+
+.ember-nav-left { text-align: left; }
+.ember-nav-center { text-align: center; }
+.ember-nav-right { text-align: right; }
+
+/* Main Content */
+.ember-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1.5rem;
+  text-align: center;
+}
+
+.ember-logo-icon {
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ember-svg-icon {
+  width: 6rem;
+  height: 6rem;
+  filter: drop-shadow(0 0 32px #00d4ff88);
+  transition: transform 0.3s cubic-bezier(.4,0,.2,1);
+}
+
+.ember-svg-icon:hover {
+  transform: scale(1.07) rotate(-3deg);
+}
+
+.ember-img-logo {
+  width: 11rem;
+  height: 11rem;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+  filter: drop-shadow(0 0 32px #00d4ff88);
+  transition: opacity 0.3s, filter 0.3s, transform 0.3s cubic-bezier(.4,0,.2,1);
+}
+
+.ember-img-logo:hover {
+  transform: scale(1.12);
+  opacity: 0.95;
+  filter: blur(0.2px) drop-shadow(0 0 80px #00d4ff88) drop-shadow(0 0 40px #070d1a99);
+}
+
+.ember-img-logo-blend {
+  mix-blend-mode: lighten;
+  opacity: 0.82;
+  filter: blur(0.5px) drop-shadow(0 0 64px #00d4ff55) drop-shadow(0 0 32px #070d1a88);
+  transition: opacity 0.3s, filter 0.3s;
+  background: transparent;
+}
+
+.ember-img-logo-blend:hover {
+  opacity: 0.95;
+  filter: blur(0.2px) drop-shadow(0 0 80px #00d4ff88) drop-shadow(0 0 40px #070d1a99);
+}
+
+.ember-title {
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  margin-bottom: 1.2rem;
+  color: #fff;
+  text-shadow: 0 2px 24px #00d4ff33;
+}
+
+.ember-tagline {
+  max-width: 600px;
+  color: #e0eaf3;
+  font-size: 1.15rem;
+  font-weight: 400;
+  margin-bottom: 0;
+  line-height: 1.6;
+  opacity: 0.92;
+}
+
+.ember-logo-heading-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.ember-logo-heading {
+  color: #fff;
+  font-size: 8.8rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  margin: 0;
+  line-height: 1;
+  text-shadow: 0 2px 24px #00d4ff33;
+  user-select: none;
+}
+
+/* Footer */
+.ember-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem 2rem 2rem;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.35);
+  text-transform: uppercase;
+  letter-spacing: 0.13em;
+}
+
+.ember-footer-left,
+.ember-footer-right {
+  flex: 1;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.ember-footer-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ember-svg-footer {
+  width: 2.2rem;
+  height: 2.2rem;
+  opacity: 0.8;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .ember-header,
+  .ember-footer {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-size: 0.7rem;
+  }
+  .ember-title {
+    font-size: 2.1rem;
+  }
+  .ember-svg-icon {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+  .ember-svg-footer {
+    width: 1.3rem;
+    height: 1.3rem;
+  }
+  .ember-tagline {
+    font-size: 0.98rem;
+  }
+} 
