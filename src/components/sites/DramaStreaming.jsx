@@ -1,118 +1,153 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import "../../stylesheets/sites/StreamingSites.css";
+import "../../stylesheets/sites/DramaStreaming.css";
 
-const StreamingSites = ({ onBack, onSelectSite }) => {
+const DramaStreaming = ({ onBack, onSelectSite }) => {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
 
-  const streamingSites = [
+  const dramaSites = [
     {
-      id: "tvgarden",
-      name: "TV Garden",
-      logo: "🌱",
-      description: "Live TV / Streaming / Multiple Channels",
+      id: "dramago",
+      name: "DramaGo",
+      logo: "🎬",
+      description: "TV / Movies / Asian Drama",
       category: "premium",
-      features: ["Live TV", "Streaming", "Multiple Channels"],
+      features: ["TV", "Movies", "Asian Drama"],
+      status: "active",
+      rating: 4.9,
+      instances: 1,
+      url: "https://dramago.me/"
+    },
+    {
+      id: "dramacool",
+      name: "DramaCool",
+      logo: "❄️",
+      description: "TV / Movies / Korean Drama",
+      category: "premium",
+      features: ["TV", "Movies", "Korean Drama"],
       status: "active",
       rating: 4.8,
       instances: 1,
-      url: "https://tv.garden/"
+      url: "https://dramacool.com.tr/"
     },
     {
-      id: "easywebtv",
-      name: "Easy Web TV",
-      logo: "📺",
-      description: "M3U8 / Live TV / Country Routes",
+      id: "kisskh",
+      name: "KissKH",
+      logo: "💋",
+      description: "TV / Movies",
       category: "premium",
-      features: ["M3U8", "Live TV", "Country Routes"],
+      features: ["TV", "Movies"],
       status: "active",
       rating: 4.7,
       instances: 1,
-      url: "https://zhangboheng.github.io/Easy-Web-TV-M3u8/routes/countries.html"
+      url: "https://kisskh.ovh/"
     },
     {
-      id: "rgshows",
-      name: "RgShows",
-      logo: "📺",
-      description: "Live TV / Streaming / Entertainment",
-      category: "premium",
-      features: ["Live TV", "Streaming", "Entertainment"],
+      id: "dramahood",
+      name: "DramaHood",
+      logo: "🏠",
+      description: "TV / Movies",
+      category: "standard",
+      features: ["TV", "Movies"],
       status: "active",
       rating: 4.6,
       instances: 1,
-      url: "https://www.rgshows.me/livetv/"
+      url: "https://dramahood.mom/"
     },
     {
-      id: "cxtvlive",
-      name: "CXT Live",
-      logo: "📡",
-      description: "Live TV / Broadcasting / Channels",
-      category: "premium",
-      features: ["Live TV", "Broadcasting", "Channels"],
+      id: "kisskh-run",
+      name: "KissKH.run",
+      logo: "💋",
+      description: "TV / Movies",
+      category: "standard",
+      features: ["TV", "Movies"],
       status: "active",
       rating: 4.5,
       instances: 1,
-      url: "https://www.cxtvlive.com/"
+      url: "https://kisskh.run/"
     },
     {
-      id: "thestreamhub",
-      name: "The Stream Hub",
-      logo: "🌊",
-      description: "Live TV / Streaming Hub / Multiple Sources",
+      id: "asiaflix",
+      name: "AsiaFlix",
+      logo: "🌏",
+      description: "TV / Movies",
       category: "premium",
-      features: ["Live TV", "Streaming Hub", "Multiple Sources"],
+      features: ["TV", "Movies"],
       status: "active",
       rating: 4.4,
       instances: 1,
-      url: "https://thestreamhub.xyz/live_tv"
+      url: "https://asiaflix.net/"
     },
     {
-      id: "globalfreetv",
-      name: "Global Free TV",
-      logo: "🌍",
-      description: "Free TV / Global Channels / Live Streaming",
+      id: "dramafire",
+      name: "DramaFire",
+      logo: "🔥",
+      description: "TV / Movies",
       category: "standard",
-      features: ["Free TV", "Global Channels", "Live Streaming"],
+      features: ["TV", "Movies"],
       status: "active",
       rating: 4.3,
       instances: 1,
-      url: "https://www.globalfreetv.com/"
+      url: "https://dramafire.com.pl/"
     },
     {
-      id: "vipotv",
-      name: "VipoTV",
-      logo: "📺",
-      description: "Live TV / Streaming / Entertainment",
-      category: "standard",
-      features: ["Live TV", "Streaming", "Entertainment"],
+      id: "asiancrush",
+      name: "AsianCrush",
+      logo: "💖",
+      description: "TV / Movies",
+      category: "premium",
+      features: ["TV", "Movies"],
       status: "active",
       rating: 4.2,
       instances: 1,
-      url: "https://vipotv.com/"
+      url: "https://www.asiancrush.com/"
     },
     {
-      id: "distrotv",
-      name: "Distro TV",
-      logo: "📡",
-      description: "Live TV / Broadcasting / Channels",
+      id: "asiansubs",
+      name: "AsianSubs",
+      logo: "📝",
+      description: "TV / Movies",
       category: "standard",
-      features: ["Live TV", "Broadcasting", "Channels"],
+      features: ["TV", "Movies"],
       status: "active",
       rating: 4.1,
       instances: 1,
-      url: "https://distro.tv/"
+      url: "https://asiansubs.com/"
+    },
+    {
+      id: "kissasiantv",
+      name: "KissAsianTV",
+      logo: "📺",
+      description: "TV / Movies",
+      category: "standard",
+      features: ["TV", "Movies"],
+      status: "active",
+      rating: 4.0,
+      instances: 1,
+      url: "https://kissasiantv.best/"
+    },
+    {
+      id: "dramacoolk",
+      name: "DramaCoolK",
+      logo: "❄️",
+      description: "TV / Movies",
+      category: "standard",
+      features: ["TV", "Movies"],
+      status: "active",
+      rating: 3.9,
+      instances: 1,
+      url: "https://dramacoolk.one/"
     }
   ];
 
   const categories = [
-    { id: "all", name: "All Sites", icon: "🎬" },
+    { id: "all", name: "All Drama", icon: "🎭" },
     { id: "premium", name: "Premium", icon: "⭐" },
-    { id: "standard", name: "Standard", icon: "📺" },
-    { id: "basic", name: "Basic", icon: "🎥" }
+    { id: "standard", name: "Standard", icon: "📺" }
   ];
 
-  const filteredSites = streamingSites.filter(site => {
+  const filteredSites = dramaSites.filter(site => {
     const matchesCategory = selectedCategory === "all" || site.category === selectedCategory;
     const matchesSearch = site.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
                          site.description.toLowerCase().includes(searchQuery.toLowerCase());
@@ -121,14 +156,14 @@ const StreamingSites = ({ onBack, onSelectSite }) => {
 
   return (
     <motion.div
-      className="streaming-sites-container"
+      className="drama-streaming-container"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.3 }}
     >
       {/* Header */}
-      <div className="streaming-sites-header">
+      <div className="drama-streaming-header">
         <motion.button
           className="back-button"
           onClick={onBack}
@@ -139,19 +174,19 @@ const StreamingSites = ({ onBack, onSelectSite }) => {
           ← Back
         </motion.button>
         <div className="header-content">
-          <h2 className="streaming-sites-title">Streaming Sites</h2>
-          <p className="streaming-sites-subtitle">
-            Access popular streaming platforms and services
+          <h2 className="drama-streaming-title">Drama Streaming</h2>
+          <p className="drama-streaming-subtitle">
+            Asian drama series and theatrical content streaming sites
           </p>
         </div>
       </div>
 
       {/* Search and Filters */}
-      <div className="streaming-sites-controls">
+      <div className="drama-streaming-controls">
         <div className="search-container">
           <input
             type="text"
-            placeholder="Search streaming sites..."
+            placeholder="Search drama streaming sites..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="search-input"
@@ -176,13 +211,13 @@ const StreamingSites = ({ onBack, onSelectSite }) => {
         </div>
       </div>
 
-      {/* Streaming Sites Grid */}
-      <div className="streaming-sites-grid">
+      {/* Drama Streaming Grid */}
+      <div className="drama-streaming-grid">
         <AnimatePresence>
           {filteredSites.map((site, index) => (
             <motion.div
               key={site.id}
-              className="streaming-site-card"
+              className="drama-streaming-card"
               data-site-id={site.id}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -234,10 +269,7 @@ const StreamingSites = ({ onBack, onSelectSite }) => {
               <div className="site-category">
                 <span className={`category-badge ${site.category}`}>
                   {site.category === 'premium' ? '⭐ Premium' :
-                   site.category === 'standard' ? '📺 Standard' :
-                   site.category === 'basic' ? '🎥 Basic' :
-                   site.category === 'third-party' ? '🔗 3rd Party' :
-                   site.category === 'downloads' ? '⬇️ Downloads' : site.category}
+                   site.category === 'standard' ? '📺 Standard' : site.category}
                 </span>
               </div>
               
@@ -246,11 +278,7 @@ const StreamingSites = ({ onBack, onSelectSite }) => {
                   className="access-site-btn"
                   onClick={(e) => {
                     e.stopPropagation();
-                    if (site.url) {
-                      window.open(site.url, '_blank', 'noopener,noreferrer');
-                    } else {
-                      onSelectSite(site);
-                    }
+                    onSelectSite(site);
                   }}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
@@ -272,11 +300,11 @@ const StreamingSites = ({ onBack, onSelectSite }) => {
           animate={{ opacity: 1 }}
         >
           <span className="no-results-icon">🔍</span>
-          <p>No streaming sites found matching your criteria</p>
+          <p>No drama streaming sites found matching your criteria</p>
         </motion.div>
       )}
     </motion.div>
   );
 };
 
-export default StreamingSites; 
+export default DramaStreaming; 

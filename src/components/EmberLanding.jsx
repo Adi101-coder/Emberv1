@@ -11,6 +11,10 @@ import StreamingSites from "./sites/StreamingSites";
 import APIFrontends from "./sites/APIFrontends";
 import SingleServer from "./sites/SingleServer";
 import AnimeStreaming from "./sites/AnimeStreaming";
+import CartoonStreaming from "./sites/CartoonStreaming";
+import DramaStreaming from "./sites/DramaStreaming";
+import LiveSports from "./sites/LiveSports";
+import LiveTV from "./sites/LiveTV";
 
 // Use logo33.png for the main logo
 import logo33 from "../assets/logo33.png";
@@ -67,28 +71,22 @@ const StreamingModal = ({ isOpen, onClose, onSelect }) => {
       color: "#54a0ff"
     },
     {
-      title: "TV Streaming",
-      description: "Television shows and series streaming",
-      icon: "📡",
-      color: "#5f27cd"
-    },
-    {
       title: "Drama Streaming",
       description: "Drama series and theatrical content",
       icon: "🎭",
       color: "#ff6348"
     },
     {
-      title: "Live Sports",
-      description: "Live sports events and competitions",
-      icon: "⚽",
-      color: "#26de81"
-    },
-    {
       title: "Live TV",
       description: "Live television channels and broadcasts",
       icon: "📺",
       color: "#ff9f43"
+    },
+    {
+      title: "Live Sports",
+      description: "Live sports events and competitions",
+      icon: "⚽",
+      color: "#26de81"
     }
   ];
 
@@ -172,6 +170,14 @@ const StreamingModal = ({ isOpen, onClose, onSelect }) => {
                             setCurrentView("single-server");
                           } else if (option.title === "Anime Streaming") {
                             setCurrentView("anime-streaming");
+                          } else if (option.title === "Cartoon Streaming") {
+                            setCurrentView("cartoon-streaming");
+                          } else if (option.title === "Drama Streaming") {
+                            setCurrentView("drama-streaming");
+                          } else if (option.title === "Live TV") {
+                            setCurrentView("live-tv");
+                          } else if (option.title === "Live Sports") {
+                            setCurrentView("live-sports");
                           } else {
                             onSelect(option.title);
                           }
@@ -264,6 +270,78 @@ const StreamingModal = ({ isOpen, onClose, onSelect }) => {
                       onSelectSite={(site) => {
                         setSelectedSite(site);
                         onSelect(`Anime Streaming - ${site.name}`);
+                      }}
+                    />
+                  </motion.div>
+                )}
+                
+                {currentView === "cartoon-streaming" && (
+                  <motion.div
+                    key="cartoon-streaming"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <CartoonStreaming 
+                      onBack={() => setCurrentView("main")}
+                      onSelectSite={(site) => {
+                        setSelectedSite(site);
+                        onSelect(`Cartoon Streaming - ${site.name}`);
+                      }}
+                    />
+                  </motion.div>
+                )}
+                
+                {currentView === "drama-streaming" && (
+                  <motion.div
+                    key="drama-streaming"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <DramaStreaming 
+                      onBack={() => setCurrentView("main")}
+                      onSelectSite={(site) => {
+                        setSelectedSite(site);
+                        onSelect(`Drama Streaming - ${site.name}`);
+                      }}
+                    />
+                  </motion.div>
+                )}
+                
+                {currentView === "live-tv" && (
+                  <motion.div
+                    key="live-tv"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <LiveTV 
+                      onBack={() => setCurrentView("main")}
+                      onSelectSite={(site) => {
+                        setSelectedSite(site);
+                        onSelect(`Live TV - ${site.name}`);
+                      }}
+                    />
+                  </motion.div>
+                )}
+                
+                {currentView === "live-sports" && (
+                  <motion.div
+                    key="live-sports"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <LiveSports 
+                      onBack={() => setCurrentView("main")}
+                      onSelectSite={(site) => {
+                        setSelectedSite(site);
+                        onSelect(`Live Sports - ${site.name}`);
                       }}
                     />
                   </motion.div>

@@ -1,118 +1,71 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import "../../stylesheets/sites/StreamingSites.css";
+import "../../stylesheets/sites/CartoonStreaming.css";
 
-const StreamingSites = ({ onBack, onSelectSite }) => {
+const CartoonStreaming = ({ onBack, onSelectSite }) => {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
 
-  const streamingSites = [
+  const cartoonSites = [
     {
-      id: "tvgarden",
-      name: "TV Garden",
-      logo: "🌱",
-      description: "Live TV / Streaming / Multiple Channels",
+      id: "hicartoon",
+      name: "HiCartoon",
+      logo: "🌟",
+      description: "TV / Movies / Ultra HD Quality",
       category: "premium",
-      features: ["Live TV", "Streaming", "Multiple Channels"],
+      features: ["TV", "Movies", "Ultra HD", "Download"],
       status: "active",
-      rating: 4.8,
+      rating: 4.9,
       instances: 1,
-      url: "https://tv.garden/"
+      url: "https://hicartoon.to/"
     },
     {
-      id: "easywebtv",
-      name: "Easy Web TV",
-      logo: "📺",
-      description: "M3U8 / Live TV / Country Routes",
+      id: "kisscartoon",
+      name: "KissCartoon",
+      logo: "💋",
+      description: "TV / Movies / Anime",
       category: "premium",
-      features: ["M3U8", "Live TV", "Country Routes"],
+      features: ["TV", "Movies", "Anime"],
       status: "active",
       rating: 4.7,
       instances: 1,
-      url: "https://zhangboheng.github.io/Easy-Web-TV-M3u8/routes/countries.html"
+      url: "https://kisscartoon.nz/"
     },
     {
-      id: "rgshows",
-      name: "RgShows",
-      logo: "📺",
-      description: "Live TV / Streaming / Entertainment",
-      category: "premium",
-      features: ["Live TV", "Streaming", "Entertainment"],
-      status: "active",
-      rating: 4.6,
-      instances: 1,
-      url: "https://www.rgshows.me/livetv/"
-    },
-    {
-      id: "cxtvlive",
-      name: "CXT Live",
-      logo: "📡",
-      description: "Live TV / Broadcasting / Channels",
-      category: "premium",
-      features: ["Live TV", "Broadcasting", "Channels"],
+      id: "funnier moments",
+      name: "FunnierMoments",
+      logo: "😄",
+      description: "TV / Classic Cartoons",
+      category: "classic",
+      features: ["TV", "Classic", "Series"],
       status: "active",
       rating: 4.5,
       instances: 1,
-      url: "https://www.cxtvlive.com/"
+      url: "https://www.funniermoments.net/"
     },
     {
-      id: "thestreamhub",
-      name: "The Stream Hub",
-      logo: "🌊",
-      description: "Live TV / Streaming Hub / Multiple Sources",
-      category: "premium",
-      features: ["Live TV", "Streaming Hub", "Multiple Sources"],
-      status: "active",
-      rating: 4.4,
-      instances: 1,
-      url: "https://thestreamhub.xyz/live_tv"
-    },
-    {
-      id: "globalfreetv",
-      name: "Global Free TV",
-      logo: "🌍",
-      description: "Free TV / Global Channels / Live Streaming",
-      category: "standard",
-      features: ["Free TV", "Global Channels", "Live Streaming"],
+      id: "supercartoons",
+      name: "SuperCartoons",
+      logo: "🦸",
+      description: "Classic / 1500+ Cartoons",
+      category: "classic",
+      features: ["Classic", "1500+ Cartoons", "Mickey Mouse", "Tom and Jerry"],
       status: "active",
       rating: 4.3,
       instances: 1,
-      url: "https://www.globalfreetv.com/"
-    },
-    {
-      id: "vipotv",
-      name: "VipoTV",
-      logo: "📺",
-      description: "Live TV / Streaming / Entertainment",
-      category: "standard",
-      features: ["Live TV", "Streaming", "Entertainment"],
-      status: "active",
-      rating: 4.2,
-      instances: 1,
-      url: "https://vipotv.com/"
-    },
-    {
-      id: "distrotv",
-      name: "Distro TV",
-      logo: "📡",
-      description: "Live TV / Broadcasting / Channels",
-      category: "standard",
-      features: ["Live TV", "Broadcasting", "Channels"],
-      status: "active",
-      rating: 4.1,
-      instances: 1,
-      url: "https://distro.tv/"
+      url: "https://www.supercartoons.net/"
     }
   ];
 
   const categories = [
-    { id: "all", name: "All Sites", icon: "🎬" },
+    { id: "all", name: "All Cartoons", icon: "🎨" },
     { id: "premium", name: "Premium", icon: "⭐" },
     { id: "standard", name: "Standard", icon: "📺" },
-    { id: "basic", name: "Basic", icon: "🎥" }
+    { id: "classic", name: "Classic", icon: "🕰️" },
+    { id: "special", name: "Special", icon: "🌟" }
   ];
 
-  const filteredSites = streamingSites.filter(site => {
+  const filteredSites = cartoonSites.filter(site => {
     const matchesCategory = selectedCategory === "all" || site.category === selectedCategory;
     const matchesSearch = site.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
                          site.description.toLowerCase().includes(searchQuery.toLowerCase());
@@ -121,14 +74,14 @@ const StreamingSites = ({ onBack, onSelectSite }) => {
 
   return (
     <motion.div
-      className="streaming-sites-container"
+      className="cartoon-streaming-container"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.3 }}
     >
       {/* Header */}
-      <div className="streaming-sites-header">
+      <div className="cartoon-streaming-header">
         <motion.button
           className="back-button"
           onClick={onBack}
@@ -139,19 +92,19 @@ const StreamingSites = ({ onBack, onSelectSite }) => {
           ← Back
         </motion.button>
         <div className="header-content">
-          <h2 className="streaming-sites-title">Streaming Sites</h2>
-          <p className="streaming-sites-subtitle">
-            Access popular streaming platforms and services
+          <h2 className="cartoon-streaming-title">Cartoon Streaming</h2>
+          <p className="cartoon-streaming-subtitle">
+            Animated content and cartoon series streaming sites
           </p>
         </div>
       </div>
 
       {/* Search and Filters */}
-      <div className="streaming-sites-controls">
+      <div className="cartoon-streaming-controls">
         <div className="search-container">
           <input
             type="text"
-            placeholder="Search streaming sites..."
+            placeholder="Search cartoon streaming sites..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="search-input"
@@ -176,13 +129,13 @@ const StreamingSites = ({ onBack, onSelectSite }) => {
         </div>
       </div>
 
-      {/* Streaming Sites Grid */}
-      <div className="streaming-sites-grid">
+      {/* Cartoon Streaming Grid */}
+      <div className="cartoon-streaming-grid">
         <AnimatePresence>
           {filteredSites.map((site, index) => (
             <motion.div
               key={site.id}
-              className="streaming-site-card"
+              className="cartoon-streaming-card"
               data-site-id={site.id}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -235,9 +188,8 @@ const StreamingSites = ({ onBack, onSelectSite }) => {
                 <span className={`category-badge ${site.category}`}>
                   {site.category === 'premium' ? '⭐ Premium' :
                    site.category === 'standard' ? '📺 Standard' :
-                   site.category === 'basic' ? '🎥 Basic' :
-                   site.category === 'third-party' ? '🔗 3rd Party' :
-                   site.category === 'downloads' ? '⬇️ Downloads' : site.category}
+                   site.category === 'classic' ? '🕰️ Classic' :
+                   site.category === 'special' ? '🌟 Special' : site.category}
                 </span>
               </div>
               
@@ -246,11 +198,7 @@ const StreamingSites = ({ onBack, onSelectSite }) => {
                   className="access-site-btn"
                   onClick={(e) => {
                     e.stopPropagation();
-                    if (site.url) {
-                      window.open(site.url, '_blank', 'noopener,noreferrer');
-                    } else {
-                      onSelectSite(site);
-                    }
+                    onSelectSite(site);
                   }}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
@@ -272,11 +220,11 @@ const StreamingSites = ({ onBack, onSelectSite }) => {
           animate={{ opacity: 1 }}
         >
           <span className="no-results-icon">🔍</span>
-          <p>No streaming sites found matching your criteria</p>
+          <p>No cartoon streaming sites found matching your criteria</p>
         </motion.div>
       )}
     </motion.div>
   );
 };
 
-export default StreamingSites; 
+export default CartoonStreaming; 

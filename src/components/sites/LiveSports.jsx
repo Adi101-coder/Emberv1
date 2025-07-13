@@ -1,118 +1,33 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import "../../stylesheets/sites/StreamingSites.css";
+import "../../stylesheets/sites/LiveSports.css";
 
-const StreamingSites = ({ onBack, onSelectSite }) => {
+const LiveSports = ({ onBack, onSelectSite }) => {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
 
-  const streamingSites = [
-    {
-      id: "tvgarden",
-      name: "TV Garden",
-      logo: "🌱",
-      description: "Live TV / Streaming / Multiple Channels",
-      category: "premium",
-      features: ["Live TV", "Streaming", "Multiple Channels"],
-      status: "active",
-      rating: 4.8,
-      instances: 1,
-      url: "https://tv.garden/"
-    },
-    {
-      id: "easywebtv",
-      name: "Easy Web TV",
-      logo: "📺",
-      description: "M3U8 / Live TV / Country Routes",
-      category: "premium",
-      features: ["M3U8", "Live TV", "Country Routes"],
-      status: "active",
-      rating: 4.7,
-      instances: 1,
-      url: "https://zhangboheng.github.io/Easy-Web-TV-M3u8/routes/countries.html"
-    },
-    {
-      id: "rgshows",
-      name: "RgShows",
-      logo: "📺",
-      description: "Live TV / Streaming / Entertainment",
-      category: "premium",
-      features: ["Live TV", "Streaming", "Entertainment"],
-      status: "active",
-      rating: 4.6,
-      instances: 1,
-      url: "https://www.rgshows.me/livetv/"
-    },
-    {
-      id: "cxtvlive",
-      name: "CXT Live",
-      logo: "📡",
-      description: "Live TV / Broadcasting / Channels",
-      category: "premium",
-      features: ["Live TV", "Broadcasting", "Channels"],
-      status: "active",
-      rating: 4.5,
-      instances: 1,
-      url: "https://www.cxtvlive.com/"
-    },
-    {
-      id: "thestreamhub",
-      name: "The Stream Hub",
-      logo: "🌊",
-      description: "Live TV / Streaming Hub / Multiple Sources",
-      category: "premium",
-      features: ["Live TV", "Streaming Hub", "Multiple Sources"],
-      status: "active",
-      rating: 4.4,
-      instances: 1,
-      url: "https://thestreamhub.xyz/live_tv"
-    },
-    {
-      id: "globalfreetv",
-      name: "Global Free TV",
-      logo: "🌍",
-      description: "Free TV / Global Channels / Live Streaming",
-      category: "standard",
-      features: ["Free TV", "Global Channels", "Live Streaming"],
-      status: "active",
-      rating: 4.3,
-      instances: 1,
-      url: "https://www.globalfreetv.com/"
-    },
-    {
-      id: "vipotv",
-      name: "VipoTV",
-      logo: "📺",
-      description: "Live TV / Streaming / Entertainment",
-      category: "standard",
-      features: ["Live TV", "Streaming", "Entertainment"],
-      status: "active",
-      rating: 4.2,
-      instances: 1,
-      url: "https://vipotv.com/"
-    },
-    {
-      id: "distrotv",
-      name: "Distro TV",
-      logo: "📡",
-      description: "Live TV / Broadcasting / Channels",
-      category: "standard",
-      features: ["Live TV", "Broadcasting", "Channels"],
-      status: "active",
-      rating: 4.1,
-      instances: 1,
-      url: "https://distro.tv/"
-    }
+  const liveSportsSites = [
+    // Live Sports content will be added here
   ];
 
   const categories = [
-    { id: "all", name: "All Sites", icon: "🎬" },
-    { id: "premium", name: "Premium", icon: "⭐" },
-    { id: "standard", name: "Standard", icon: "📺" },
-    { id: "basic", name: "Basic", icon: "🎥" }
+    { id: "all", name: "All Sports", icon: "⚽" },
+    { id: "football", name: "Football", icon: "⚽" },
+    { id: "basketball", name: "Basketball", icon: "🏀" },
+    { id: "baseball", name: "Baseball", icon: "⚾" },
+    { id: "hockey", name: "Hockey", icon: "🏒" },
+    { id: "tennis", name: "Tennis", icon: "🎾" },
+    { id: "cricket", name: "Cricket", icon: "🏏" },
+    { id: "rugby", name: "Rugby", icon: "🏉" },
+    { id: "golf", name: "Golf", icon: "⛳" },
+    { id: "boxing", name: "Boxing", icon: "🥊" },
+    { id: "mma", name: "MMA", icon: "🥋" },
+    { id: "racing", name: "Racing", icon: "🏎️" },
+    { id: "olympics", name: "Olympics", icon: "🏅" },
+    { id: "other", name: "Other Sports", icon: "🏆" }
   ];
 
-  const filteredSites = streamingSites.filter(site => {
+  const filteredSites = liveSportsSites.filter(site => {
     const matchesCategory = selectedCategory === "all" || site.category === selectedCategory;
     const matchesSearch = site.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
                          site.description.toLowerCase().includes(searchQuery.toLowerCase());
@@ -121,14 +36,14 @@ const StreamingSites = ({ onBack, onSelectSite }) => {
 
   return (
     <motion.div
-      className="streaming-sites-container"
+      className="live-sports-container"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.3 }}
     >
       {/* Header */}
-      <div className="streaming-sites-header">
+      <div className="live-sports-header">
         <motion.button
           className="back-button"
           onClick={onBack}
@@ -139,24 +54,23 @@ const StreamingSites = ({ onBack, onSelectSite }) => {
           ← Back
         </motion.button>
         <div className="header-content">
-          <h2 className="streaming-sites-title">Streaming Sites</h2>
-          <p className="streaming-sites-subtitle">
-            Access popular streaming platforms and services
+          <h2 className="live-sports-title">Live Sports</h2>
+          <p className="live-sports-subtitle">
+            Live sports events and competitions from around the world
           </p>
         </div>
       </div>
 
       {/* Search and Filters */}
-      <div className="streaming-sites-controls">
+      <div className="live-sports-controls">
         <div className="search-container">
           <input
             type="text"
-            placeholder="Search streaming sites..."
+            placeholder="Search live sports sites..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="search-input"
           />
-          <span className="search-icon">🔍</span>
         </div>
         
         <div className="category-filters">
@@ -176,13 +90,13 @@ const StreamingSites = ({ onBack, onSelectSite }) => {
         </div>
       </div>
 
-      {/* Streaming Sites Grid */}
-      <div className="streaming-sites-grid">
+      {/* Live Sports Grid */}
+      <div className="live-sports-grid">
         <AnimatePresence>
           {filteredSites.map((site, index) => (
             <motion.div
               key={site.id}
-              className="streaming-site-card"
+              className="live-sports-card"
               data-site-id={site.id}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -234,10 +148,7 @@ const StreamingSites = ({ onBack, onSelectSite }) => {
               <div className="site-category">
                 <span className={`category-badge ${site.category}`}>
                   {site.category === 'premium' ? '⭐ Premium' :
-                   site.category === 'standard' ? '📺 Standard' :
-                   site.category === 'basic' ? '🎥 Basic' :
-                   site.category === 'third-party' ? '🔗 3rd Party' :
-                   site.category === 'downloads' ? '⬇️ Downloads' : site.category}
+                   site.category === 'standard' ? '📡 Standard' : site.category}
                 </span>
               </div>
               
@@ -272,11 +183,11 @@ const StreamingSites = ({ onBack, onSelectSite }) => {
           animate={{ opacity: 1 }}
         >
           <span className="no-results-icon">🔍</span>
-          <p>No streaming sites found matching your criteria</p>
+          <p>No live sports sites found matching your criteria</p>
         </motion.div>
       )}
     </motion.div>
   );
 };
 
-export default StreamingSites; 
+export default LiveSports; 

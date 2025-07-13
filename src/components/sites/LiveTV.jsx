@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import "../../stylesheets/sites/StreamingSites.css";
+import "../../stylesheets/sites/LiveSports.css";
 
-const StreamingSites = ({ onBack, onSelectSite }) => {
+const LiveTV = ({ onBack, onSelectSite }) => {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
 
-  const streamingSites = [
+  const liveTVSites = [
     {
       id: "tvgarden",
       name: "TV Garden",
@@ -106,13 +106,12 @@ const StreamingSites = ({ onBack, onSelectSite }) => {
   ];
 
   const categories = [
-    { id: "all", name: "All Sites", icon: "🎬" },
+    { id: "all", name: "All Sites", icon: "📺" },
     { id: "premium", name: "Premium", icon: "⭐" },
-    { id: "standard", name: "Standard", icon: "📺" },
-    { id: "basic", name: "Basic", icon: "🎥" }
+    { id: "standard", name: "Standard", icon: "📡" }
   ];
 
-  const filteredSites = streamingSites.filter(site => {
+  const filteredSites = liveTVSites.filter(site => {
     const matchesCategory = selectedCategory === "all" || site.category === selectedCategory;
     const matchesSearch = site.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
                          site.description.toLowerCase().includes(searchQuery.toLowerCase());
@@ -121,14 +120,14 @@ const StreamingSites = ({ onBack, onSelectSite }) => {
 
   return (
     <motion.div
-      className="streaming-sites-container"
+      className="live-sports-container"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.3 }}
     >
       {/* Header */}
-      <div className="streaming-sites-header">
+      <div className="live-sports-header">
         <motion.button
           className="back-button"
           onClick={onBack}
@@ -139,24 +138,23 @@ const StreamingSites = ({ onBack, onSelectSite }) => {
           ← Back
         </motion.button>
         <div className="header-content">
-          <h2 className="streaming-sites-title">Streaming Sites</h2>
-          <p className="streaming-sites-subtitle">
-            Access popular streaming platforms and services
+          <h2 className="live-sports-title">Live TV</h2>
+          <p className="live-sports-subtitle">
+            Live television channels and broadcasts from around the world
           </p>
         </div>
       </div>
 
       {/* Search and Filters */}
-      <div className="streaming-sites-controls">
+      <div className="live-sports-controls">
         <div className="search-container">
           <input
             type="text"
-            placeholder="Search streaming sites..."
+            placeholder="Search live TV sites..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="search-input"
           />
-          <span className="search-icon">🔍</span>
         </div>
         
         <div className="category-filters">
@@ -176,13 +174,13 @@ const StreamingSites = ({ onBack, onSelectSite }) => {
         </div>
       </div>
 
-      {/* Streaming Sites Grid */}
-      <div className="streaming-sites-grid">
+      {/* Live TV Grid */}
+      <div className="live-sports-grid">
         <AnimatePresence>
           {filteredSites.map((site, index) => (
             <motion.div
               key={site.id}
-              className="streaming-site-card"
+              className="live-sports-card"
               data-site-id={site.id}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -234,10 +232,7 @@ const StreamingSites = ({ onBack, onSelectSite }) => {
               <div className="site-category">
                 <span className={`category-badge ${site.category}`}>
                   {site.category === 'premium' ? '⭐ Premium' :
-                   site.category === 'standard' ? '📺 Standard' :
-                   site.category === 'basic' ? '🎥 Basic' :
-                   site.category === 'third-party' ? '🔗 3rd Party' :
-                   site.category === 'downloads' ? '⬇️ Downloads' : site.category}
+                   site.category === 'standard' ? '📡 Standard' : site.category}
                 </span>
               </div>
               
@@ -272,11 +267,11 @@ const StreamingSites = ({ onBack, onSelectSite }) => {
           animate={{ opacity: 1 }}
         >
           <span className="no-results-icon">🔍</span>
-          <p>No streaming sites found matching your criteria</p>
+          <p>No live TV sites found matching your criteria</p>
         </motion.div>
       )}
     </motion.div>
   );
 };
 
-export default StreamingSites; 
+export default LiveTV; 
