@@ -127,7 +127,7 @@ const SingleServer = ({ onBack, onSelectSite }) => {
           ← Back
         </motion.button>
         <div className="header-content">
-          <h2 className="single-server-title">Single Server</h2>
+          <h2 className="single-server-title">Single Server Sites</h2>
           <p className="single-server-subtitle">
             High-quality single-server streaming sites with consistent speed and reliability
           </p>

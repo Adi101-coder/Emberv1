@@ -10,6 +10,7 @@ import AnimatedBubbles from "./AnimatedBubbles";
 import StreamingSites from "./sites/StreamingSites";
 import APIFrontends from "./sites/APIFrontends";
 import SingleServer from "./sites/SingleServer";
+import AnimeStreaming from "./sites/AnimeStreaming";
 
 // Use logo33.png for the main logo
 import logo33 from "../assets/logo33.png";
@@ -50,24 +51,9 @@ const StreamingModal = ({ isOpen, onClose, onSelect }) => {
       icon: "🖥️",
       color: "#4ecdc4"
     },
-    {
-      title: "movie-web Instances",
-      description: "Specialized movie-web streaming instances",
-      icon: "🎥",
-      color: "#45b7d1"
-    },
-    {
-      title: "Free w/ Ads",
-      description: "Free streaming with advertisement support",
-      icon: "📺",
-      color: "#96ceb4"
-    },
-    {
-      title: "Video Streaming",
-      description: "General video content streaming platforms",
-      icon: "🎞️",
-      color: "#feca57"
-    },
+
+
+
     {
       title: "Anime Streaming",
       description: "Dedicated anime and Japanese animation",
@@ -184,6 +170,8 @@ const StreamingModal = ({ isOpen, onClose, onSelect }) => {
                             setCurrentView("api-frontends");
                           } else if (option.title === "Single Server") {
                             setCurrentView("single-server");
+                          } else if (option.title === "Anime Streaming") {
+                            setCurrentView("anime-streaming");
                           } else {
                             onSelect(option.title);
                           }
@@ -262,6 +250,26 @@ const StreamingModal = ({ isOpen, onClose, onSelect }) => {
                     />
                   </motion.div>
                 )}
+                
+                {currentView === "anime-streaming" && (
+                  <motion.div
+                    key="anime-streaming"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <AnimeStreaming 
+                      onBack={() => setCurrentView("main")}
+                      onSelectSite={(site) => {
+                        setSelectedSite(site);
+                        onSelect(`Anime Streaming - ${site.name}`);
+                      }}
+                    />
+                  </motion.div>
+                )}
+                
+
               </AnimatePresence>
             </div>
           </motion.div>
