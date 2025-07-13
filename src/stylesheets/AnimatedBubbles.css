@@ -1,0 +1,91 @@
+.animated-bubbles-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.bubble {
+  position: absolute;
+  border-radius: 50%;
+  background: linear-gradient(135deg, 
+    rgba(0, 212, 255, 0.1) 0%, 
+    rgba(0, 180, 216, 0.05) 50%, 
+    rgba(0, 119, 182, 0.1) 100%);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  box-shadow: 
+    0 0 20px rgba(0, 212, 255, 0.1),
+    inset 0 0 20px rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(2px);
+  transition: all 0.3s ease;
+  animation: bubbleFloat 8s ease-in-out infinite;
+}
+
+.bubble::before {
+  content: '';
+  position: absolute;
+  top: 20%;
+  left: 20%;
+  width: 20%;
+  height: 20%;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  filter: blur(1px);
+}
+
+.bubble::after {
+  content: '';
+  position: absolute;
+  top: 15%;
+  left: 15%;
+  width: 10%;
+  height: 10%;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  filter: blur(0.5px);
+}
+
+@keyframes bubbleFloat {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+  }
+  25% {
+    transform: translateY(-10px) scale(1.05);
+  }
+  50% {
+    transform: translateY(-5px) scale(1.02);
+  }
+  75% {
+    transform: translateY(-15px) scale(1.08);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .bubble {
+    animation-duration: 6s;
+  }
+}
+
+@media (max-width: 480px) {
+  .bubble {
+    animation-duration: 4s;
+  }
+}
+
+/* Ensure bubbles don't interfere with content */
+.ember-landing-bg {
+  position: relative;
+  z-index: 2;
+}
+
+.ember-header,
+.ember-main,
+.ember-footer {
+  position: relative;
+  z-index: 3;
+} 
