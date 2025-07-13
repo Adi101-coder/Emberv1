@@ -48,13 +48,13 @@
 
 /* Background and layout */
 .ember-landing-bg {
-  position: relative;
-  height: 100vh;
   min-height: 100vh;
+  height: 100dvh;
   width: 100vw;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  overflow-x: hidden;
   /* Even darker blue theme: ultra dark blue center and edges, deep blue sides */
   background: radial-gradient(circle at 70% 50%, #070d1a 0%, #101a2c 60%, #070d1a 100%);
   color: #fff;
@@ -232,5 +232,20 @@
   }
   .ember-tagline {
     font-size: 0.98rem;
+  }
+  .ember-logo-heading-row {
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.2rem;
+  }
+  .ember-img-logo {
+    width: 5.5rem;
+    height: 5.5rem;
+  }
+  .ember-logo-heading {
+    font-size: 3.2rem;
+  }
+  .ember-tagline {
+    font-size: 1rem;
   }
 } 

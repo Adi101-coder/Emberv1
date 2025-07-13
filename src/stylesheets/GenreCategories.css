@@ -1,0 +1,23 @@
+.genre-categories-section {
+  margin: 2.5rem auto 2.5rem auto;
+  max-width: 900px;
+  padding: 2rem 1rem;
+  background: rgba(16, 26, 44, 0.7);
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 32px 0 #00d4ff11;
+}
+.section-title {
+  color: #fff;
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 1.2rem;
+  letter-spacing: 0.03em;
+  text-align: center;
+}
+.genres-placeholder {
+  color: #b0c4d4;
+  text-align: center;
+  font-size: 1.2rem;
+  padding: 2.5rem 0;
+  opacity: 0.7;
+} 
