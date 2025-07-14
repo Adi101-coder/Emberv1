@@ -1,12 +1,44 @@
-# React + Vite
+# Ember Streaming Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Ember is a modern, free streaming platform for movies, series, live TV, anime, cartoons, and live sports. Enjoy seamless, high-quality streaming across all your devices—no signup required!
 
-Currently, two official plugins are available:
+## Features
+- **Free streaming** of movies, series, live TV, anime, cartoons, and sports
+- **No signup or account required**
+- **Beautiful, modern UI** with smooth navigation
+- **Browse by genre** and discover trending content
+- **My Favourite Servers**: handpicked, reliable streaming sources
+- **Device compatibility**: works on desktop, laptop, tablet, phone, and smart TV
+- **Netflix-style FAQ** for user support
+- **Responsive design** for all screen sizes
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tech Stack
+- [React](https://react.dev/) (with functional components and hooks)
+- [Vite](https://vitejs.dev/) for fast development and builds
+- [Framer Motion](https://www.framer.com/motion/) for smooth animations
+- Modern CSS (custom, no frameworks)
 
-## Expanding the ESLint configuration
+## Getting Started
+1. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+2. **Start the development server:**
+   ```bash
+   npm run dev
+   ```
+3. **Open your browser:**
+   Visit [http://localhost:5173](http://localhost:5173) to view the app.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Project Structure
+- `src/components/` – React components (landing, genres, servers, device compatibility, FAQ, etc.)
+- `src/stylesheets/` – CSS for each component
+- `public/` – Static assets (images, icons)
+
+## Credits
+- Inspired by the best of modern streaming UIs (Netflix, PopcornMovies, FMovies)
+- Uses open-source icons and emoji for genre and server highlights
+
+---
+
+**Ember: Free streaming, no signup, all your favourite content.**
