@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "../stylesheets/EmberLanding.css";
 import { motion, AnimatePresence } from "framer-motion";
-import FeaturedCarousel from "./FeaturedCarousel";
-import HowItWorks from "./HowItWorks";
+import SpecialServers from "./SpecialServers";
 import GenreCategories from "./GenreCategories";
 import DeviceCompatibility from "./DeviceCompatibility";
 import FAQSection from "./FAQSection";
@@ -360,6 +359,7 @@ const StreamingModal = ({ isOpen, onClose, onSelect }) => {
 export default function EmberLanding() {
   const [scrollOpacity, setScrollOpacity] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const genreRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -408,12 +408,28 @@ export default function EmberLanding() {
     setIsModalOpen(false);
   };
 
+  const handleLearnMore = () => {
+    if (genreRef.current) {
+      genreRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   return (
     <div className="ember-landing-bg">
       {/* Scroll-based dark overlay */}
       <div 
         className="ember-scroll-overlay"
-        style={{ opacity: scrollOpacity }}
+        style={{ 
+          opacity: scrollOpacity, 
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100vw',
+          height: '100vh',
+          pointerEvents: 'none',
+          zIndex: 0,
+          background: 'linear-gradient(to bottom, rgba(10,18,30,0.7) 0%, rgba(10,18,30,1) 100%)'
+        }}
       ></div>
 
       {/* Animated Bubbles Background */}
@@ -498,6 +514,7 @@ export default function EmberLanding() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             transition={{ duration: 0.2 }}
+            onClick={handleLearnMore}
           >
             <span className="ember-btn-text">Learn More</span>
             <div className="ember-btn-border"></div>
@@ -507,9 +524,10 @@ export default function EmberLanding() {
 
       {/* Content Sections - Positioned Lower */}
       <div className="ember-content-sections">
-        <FeaturedCarousel />
-        <HowItWorks />
-        <GenreCategories />
+        <div ref={genreRef}>
+          <GenreCategories />
+        </div>
+        <SpecialServers />
         <DeviceCompatibility />
         <FAQSection />
       </div>

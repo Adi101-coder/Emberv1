@@ -20,4 +20,182 @@
   font-size: 1.2rem;
   padding: 2.5rem 0;
   opacity: 0.7;
-} 
+}
+
+/* Animated Device Wave */
+.device-wave-container {
+  position: relative;
+  width: 100%;
+  max-width: 1600px;
+  margin: 2.5rem auto 1.5rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.device-wave-line {
+  position: absolute;
+  left: 5%;
+  right: 5%;
+  top: 50%;
+  height: 10px;
+  background: linear-gradient(90deg, #00d4ff 60%, #4ecdc4 100%);
+  border-radius: 5px;
+  box-shadow: 0 0 32px 0 #00d4ff55, 0 2px 18px 0 #00d4ff33;
+  z-index: 0;
+  pointer-events: none;
+  transform: translateY(-50%);
+}
+
+.device-wave-row {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 6.5rem;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.device-wave-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.device-wave-sine-1 { transform: translateY(-48px); }
+.device-wave-sine-2 { transform: translateY(-18px); }
+.device-wave-sine-3 { transform: translateY(0px); }
+.device-wave-sine-4 { transform: translateY(18px); }
+.device-wave-sine-5 { transform: translateY(48px); }
+
+.device-wave-icon {
+  font-size: 4.2rem;
+  background: linear-gradient(120deg, #00d4ff 60%, #4ecdc4 100%);
+  border-radius: 50%;
+  box-shadow: 0 0 48px 0 #00d4ff99, 0 2px 28px 0 #00d4ff55;
+  padding: 1.7rem 2.1rem;
+  color: #fff;
+  margin-bottom: 1.1rem;
+  filter: drop-shadow(0 2px 18px #00d4ff55);
+  transition: box-shadow 0.18s, filter 0.18s, transform 0.18s;
+  pointer-events: auto;
+}
+
+.device-wave-label {
+  color: #fff;
+  font-size: 1.7rem;
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: 0.01em;
+  text-shadow: 0 2px 12px #00d4ff33;
+  margin-bottom: 0.3rem;
+  pointer-events: auto;
+}
+
+/* Remove animation and delays */
+.device-wave-item-1 .device-wave-icon,
+.device-wave-item-2 .device-wave-icon,
+.device-wave-item-3 .device-wave-icon,
+.device-wave-item-4 .device-wave-icon,
+.device-wave-item-5 .device-wave-icon,
+.device-wave-item-6 .device-wave-icon {
+  animation: none;
+}
+
+.device-illustration-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin: 2rem 0 1rem 0;
+  max-width: 900px;
+  width: 100%;
+}
+
+.device-illustration-svg {
+  width: 100%;
+  max-width: 650px;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 8px 48px #00d4ff33);
+  z-index: 1;
+}
+
+.device-illustration-message {
+  position: absolute;
+  left: 50%;
+  top: 16px;
+  transform: translateX(-50%);
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-shadow: 0 2px 24px #00d4ff88, 0 2px 8px #4ecdc4aa;
+  background: rgba(16, 26, 44, 0.7);
+  border-radius: 1.2rem;
+  padding: 0.5rem 2.2rem;
+  z-index: 2;
+  box-shadow: 0 2px 16px #00d4ff22;
+}
+
+.device-illustration-caption {
+  color: #b0c4d4;
+  text-align: center;
+  font-size: 1.13rem;
+  margin-top: 1.2rem;
+  opacity: 0.85;
+  letter-spacing: 0.01em;
+}
+
+.device-illustration-svg g[class^="device-svg-"] {
+  cursor: pointer;
+  transition: filter 0.22s, transform 0.22s;
+  filter: drop-shadow(0 0 0 #00d4ff00);
+}
+.device-illustration-svg g.device-svg-desktop:hover {
+  transform: scale(1.08) translateY(-18px);
+  filter: drop-shadow(0 0 16px #00d4ffcc);
+}
+.device-illustration-svg g.device-svg-laptop:hover {
+  transform: scale(1.08) translateY(-18px);
+  filter: drop-shadow(0 0 16px #4ecdc4cc);
+}
+.device-illustration-svg g.device-svg-tablet:hover {
+  transform: scale(1.08) translateY(-18px);
+  filter: drop-shadow(0 0 16px #ff9f43cc);
+}
+.device-illustration-svg g.device-svg-phone:hover {
+  transform: scale(1.08) translateY(-18px);
+  filter: drop-shadow(0 0 16px #ff6b6bcc);
+}
+.device-illustration-svg g.device-svg-tv:hover {
+  transform: scale(1.08) translateY(-18px);
+  filter: drop-shadow(0 0 16px #00d4ffcc);
+}
+.device-illustration-svg g[class^="device-svg-"]:hover rect {
+  stroke-width: 4.5 !important;
+  filter: brightness(1.2);
+}
+
+@media (max-width: 700px) {
+  .device-illustration-svg {
+    max-width: 98vw;
+  }
+  .device-illustration-message {
+    font-size: 1rem;
+    padding: 0.4rem 1.1rem;
+  }
+}
+
+/* Remove 3D row styles for clarity */
+/*
+.device-3d-row { display: none; }
+.device-3d-item { display: none; }
+.device-3d-icon { display: none; }
+.device-3d-label { display: none; }
+.device-3d-reflection { display: none; }
+.device-3d-caption { display: none; }
+*/ 
