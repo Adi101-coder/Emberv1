@@ -132,8 +132,7 @@ const StreamingSites = ({ onBack, onSelectSite }) => {
   const categories = [
     { id: "all", name: "All Sites", icon: "🎬" },
     { id: "premium", name: "Premium", icon: "⭐" },
-    { id: "standard", name: "Standard", icon: "📺" },
-    { id: "basic", name: "Basic", icon: "🎥" }
+    { id: "standard", name: "Standard", icon: "📺" }
   ];
 
   const filteredSites = streamingSites.filter(site => {
@@ -201,7 +200,7 @@ const StreamingSites = ({ onBack, onSelectSite }) => {
       </div>
 
       {/* Streaming Sites Grid */}
-      <div className="streaming-sites-grid">
+      <div className="streaming-sites-grid" style={{ maxHeight: '520px', overflowY: 'auto' }}>
         <AnimatePresence>
           {filteredSites.map((site, index) => (
             <motion.div

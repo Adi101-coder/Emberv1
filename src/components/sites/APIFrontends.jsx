@@ -144,8 +144,7 @@ const APIFrontends = ({ onBack, onSelectSite }) => {
   const categories = [
     { id: "all", name: "All Frontends", icon: "🎬" },
     { id: "premium", name: "Premium", icon: "⭐" },
-    { id: "standard", name: "Standard", icon: "📺" },
-    { id: "basic", name: "Basic", icon: "🎥" }
+    { id: "standard", name: "Standard", icon: "📺" }
   ];
 
   const filteredSites = apiFrontends.filter(site => {
@@ -213,7 +212,7 @@ const APIFrontends = ({ onBack, onSelectSite }) => {
       </div>
 
       {/* API Frontends Grid */}
-      <div className="api-frontends-grid">
+      <div className="api-frontends-grid" style={{ maxHeight: '520px', overflowY: 'auto' }}>
         <AnimatePresence>
           {filteredSites.map((site, index) => (
             <motion.div

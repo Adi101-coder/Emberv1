@@ -1,7 +1,7 @@
 import React from "react";
 import "../stylesheets/GenreCategories.css";
 
-export default function GenreCategories() {
+export default function GenreCategories({ onGenreClick = () => {} }) {
   const genres = [
     { name: "Movies", icon: "🎬", desc: "Blockbusters, classics, and new releases." },
     { name: "Series", icon: "📺", desc: "Binge-worthy TV shows and originals." },
@@ -16,10 +16,15 @@ export default function GenreCategories() {
 
   return (
     <section className="genre-categories-section">
-      <h2 className="section-title">Browse by Genre</h2>
+      <h2 className="section-title">Genre we serve</h2>
       <div className="genre-grid">
         {genres.map((genre) => (
-          <div className="genre-card" key={genre.name}>
+          <div
+            className="genre-card"
+            key={genre.name}
+            onClick={() => onGenreClick(genre.name)}
+            style={{ cursor: 'pointer' }}
+          >
             <div className="genre-icon">{genre.icon}</div>
             <div className="genre-name">{genre.name}</div>
             <div className="genre-desc">{genre.desc}</div>

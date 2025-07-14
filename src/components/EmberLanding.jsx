@@ -1,10 +1,11 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, Suspense } from "react";
 import "../stylesheets/EmberLanding.css";
 import { motion, AnimatePresence } from "framer-motion";
-import SpecialServers from "./SpecialServers";
+// import SpecialServers, DeviceCompatibility, FAQSection as lazy
+const SpecialServers = React.lazy(() => import("./SpecialServers"));
+const DeviceCompatibility = React.lazy(() => import("./DeviceCompatibility"));
+const FAQSection = React.lazy(() => import("./FAQSection"));
 import GenreCategories from "./GenreCategories";
-import DeviceCompatibility from "./DeviceCompatibility";
-import FAQSection from "./FAQSection";
 import AnimatedBubbles from "./AnimatedBubbles";
 import StreamingSites from "./sites/StreamingSites";
 import APIFrontends from "./sites/APIFrontends";
@@ -32,7 +33,7 @@ const EmberIcon = ({ className = "" }) => (
   </svg>
 );
 
-const StreamingModal = ({ isOpen, onClose, onSelect }) => {
+const StreamingModal = ({ isOpen, onClose, onSelect, initialView }) => {
   const [currentView, setCurrentView] = useState("main");
   const [selectedSite, setSelectedSite] = useState(null);
   const streamingOptions = [
@@ -89,6 +90,12 @@ const StreamingModal = ({ isOpen, onClose, onSelect }) => {
     }
   ];
 
+  useEffect(() => {
+    if (initialView) {
+      setCurrentView(initialView);
+    }
+  }, [initialView]);
+
   return (
     <AnimatePresence>
       {isOpen && (
@@ -101,11 +108,11 @@ const StreamingModal = ({ isOpen, onClose, onSelect }) => {
         >
           <motion.div
             className="ember-modal"
-            initial={{ scale: 0.8, opacity: 0, y: 50, rotateX: -15 }}
-            animate={{ scale: 1, opacity: 1, y: 0, rotateX: 0 }}
-            exit={{ scale: 0.8, opacity: 0, y: 50, rotateX: -15 }}
+            initial={{ scale: 0.96, opacity: 0, y: 30 }}
+            animate={{ scale: 1, opacity: 1, y: 0 }}
+            exit={{ scale: 0.96, opacity: 0, y: 30 }}
             onClick={(e) => e.stopPropagation()}
-            transition={{ duration: 0.4, ease: "easeOut" }}
+            transition={{ duration: 0.22, ease: "easeOut" }}
           >
             <div className="ember-modal-header">
               <div className="ember-modal-title-section">
@@ -113,7 +120,7 @@ const StreamingModal = ({ isOpen, onClose, onSelect }) => {
                   className="ember-modal-icon"
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
-                  transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
+                  transition={{ duration: 0.18, ease: "easeOut" }}
                 >
                   🎬
                 </motion.div>
@@ -123,9 +130,9 @@ const StreamingModal = ({ isOpen, onClose, onSelect }) => {
               <motion.button 
                 className="ember-modal-close" 
                 onClick={onClose}
-                whileHover={{ scale: 1.1, rotate: 90 }}
-                whileTap={{ scale: 0.9 }}
-                transition={{ duration: 0.2 }}
+                whileHover={{ scale: 1.08, rotate: 90 }}
+                whileTap={{ scale: 0.96 }}
+                transition={{ duration: 0.13 }}
               >
                 ×
               </motion.button>
@@ -140,26 +147,21 @@ const StreamingModal = ({ isOpen, onClose, onSelect }) => {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    transition={{ delay: 0.3, duration: 0.5 }}
+                    transition={{ duration: 0.18 }}
                   >
                     {streamingOptions.map((option, index) => (
                       <motion.div
                         key={index}
                         className="ember-streaming-option"
-                        initial={{ opacity: 0, y: 20, scale: 0.9 }}
+                        initial={{ opacity: 0, y: 10, scale: 0.98 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
-                                            transition={{ 
-                      delay: 0.4 + (index * 0.05), 
-                      duration: 0.3,
-                      type: "spring",
-                      stiffness: 100
-                    }}
-                    whileHover={{ 
-                      scale: 1.02, 
-                      y: -2,
-                      boxShadow: `0 8px 25px ${option.color}30`
-                    }}
-                    whileTap={{ scale: 0.98 }}
+                        transition={{ duration: 0.18 }}
+                        whileHover={{ 
+                          scale: 1.01, 
+                          y: -2,
+                          boxShadow: `0 8px 25px ${option.color}30`
+                        }}
+                        whileTap={{ scale: 0.98 }}
                         onClick={() => {
                           if (option.title === "Streaming Sites") {
                             setCurrentView("streaming-sites");
@@ -193,7 +195,7 @@ const StreamingModal = ({ isOpen, onClose, onSelect }) => {
                           className="ember-option-arrow"
                           initial={{ x: 0 }}
                           whileHover={{ x: 5 }}
-                          transition={{ duration: 0.2 }}
+                          transition={{ duration: 0.13 }}
                         >
                           →
                         </motion.div>
@@ -359,6 +361,7 @@ const StreamingModal = ({ isOpen, onClose, onSelect }) => {
 export default function EmberLanding() {
   const [scrollOpacity, setScrollOpacity] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalInitialView, setModalInitialView] = useState(null);
   const genreRef = useRef(null);
 
   useEffect(() => {
@@ -412,6 +415,23 @@ export default function EmberLanding() {
     if (genreRef.current) {
       genreRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
+  };
+
+  const handleGenreTileClick = (genre) => {
+    // Map genre to modal view key
+    const genreToView = {
+      'Movies': 'streaming-sites',
+      'Series': 'streaming-sites',
+      'Live TV': 'live-tv',
+      'Anime': 'anime-streaming',
+      'Cartoons': 'cartoon-streaming',
+      'Live Sports': 'live-sports',
+      'Documentary': 'streaming-sites',
+      'Kids': 'cartoon-streaming',
+      'Trending': 'streaming-sites',
+    };
+    setModalInitialView(genreToView[genre] || 'main');
+    setIsModalOpen(true);
   };
 
   return (
@@ -525,11 +545,17 @@ export default function EmberLanding() {
       {/* Content Sections - Positioned Lower */}
       <div className="ember-content-sections">
         <div ref={genreRef}>
-          <GenreCategories />
+          <GenreCategories onGenreClick={handleGenreTileClick} />
         </div>
-        <SpecialServers />
-        <DeviceCompatibility />
-        <FAQSection />
+        <Suspense fallback={<div style={{height: 120, textAlign: 'center', color: '#00d4ff'}}>Loading servers...</div>}>
+          <SpecialServers />
+        </Suspense>
+        <Suspense fallback={<div style={{height: 120, textAlign: 'center', color: '#00d4ff'}}>Loading device compatibility...</div>}>
+          <DeviceCompatibility />
+        </Suspense>
+        <Suspense fallback={<div style={{height: 120, textAlign: 'center', color: '#00d4ff'}}>Loading FAQ...</div>}>
+          <FAQSection />
+        </Suspense>
       </div>
 
       {/* Footer */}
@@ -546,6 +572,7 @@ export default function EmberLanding() {
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         onSelect={handleStreamingSelect}
+        initialView={modalInitialView}
       />
     </div>
   );

@@ -96,8 +96,7 @@ const SingleServer = ({ onBack, onSelectSite }) => {
   const categories = [
     { id: "all", name: "All Servers", icon: "🎬" },
     { id: "premium", name: "Premium", icon: "⭐" },
-    { id: "standard", name: "Standard", icon: "📺" },
-    { id: "basic", name: "Basic", icon: "🎥" }
+    { id: "standard", name: "Standard", icon: "📺" }
   ];
 
   const filteredSites = singleServerSites.filter(site => {
