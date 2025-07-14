@@ -143,7 +143,6 @@ const SingleServer = ({ onBack, onSelectSite }) => {
             onChange={(e) => setSearchQuery(e.target.value)}
             className="search-input"
           />
-          <span className="search-icon">🔍</span>
         </div>
         
         <div className="category-filters">

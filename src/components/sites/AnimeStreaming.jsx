@@ -8,6 +8,18 @@ const AnimeStreaming = ({ onBack, onSelectSite }) => {
 
   const animeSites = [
     {
+      id: "miruro",
+      name: "Miruro",
+      logo: "🎭",
+      description: "Hard Subs / Dub / Auto-Next",
+      category: "premium",
+      features: ["Hard Subs", "Dub", "Auto-Next"],
+      status: "active",
+      rating: 4.8,
+      instances: 1,
+      url: "https://www.miruro.com/"
+    },
+    {
       id: "animekai",
       name: "AnimeKai",
       logo: "🌸",
@@ -18,18 +30,6 @@ const AnimeStreaming = ({ onBack, onSelectSite }) => {
       rating: 4.9,
       instances: 4,
       url: "https://animekai.to/"
-    },
-    {
-      id: "miruro",
-      name: "Miruro",
-      logo: "🎭",
-      description: "Hard Subs / Dub / Auto-Next",
-      category: "premium",
-      features: ["Hard Subs", "Dub", "Auto-Next"],
-      status: "active",
-      rating: 4.8,
-      instances: 1,
-      url: "https://www.miruro.online/"
     },
     {
       id: "allmanga",
@@ -65,7 +65,7 @@ const AnimeStreaming = ({ onBack, onSelectSite }) => {
       status: "active",
       rating: 4.3,
       instances: 1,
-      url: "https://kuroiru.co/app"
+      url: "https://kuroiru.co/"
     },
     {
       id: "anify",
@@ -212,18 +212,6 @@ const AnimeStreaming = ({ onBack, onSelectSite }) => {
       url: "https://aniplay.lol/"
     },
     {
-      id: "anizone",
-      name: "AniZone",
-      logo: "🌍",
-      description: "Sub",
-      category: "basic",
-      features: ["Sub"],
-      status: "active",
-      rating: 2.7,
-      instances: 1,
-      url: "https://anizone.to/"
-    },
-    {
       id: "anihq",
       name: "AniHQ",
       logo: "🏢",
@@ -306,18 +294,6 @@ const AnimeStreaming = ({ onBack, onSelectSite }) => {
       rating: 1.7,
       instances: 1,
       url: "https://myanime.live/"
-    },
-    {
-      id: "animekhor",
-      name: "AnimeKhor",
-      logo: "🌙",
-      description: "Donghua / Sub",
-      category: "donghua",
-      features: ["Donghua", "Sub"],
-      status: "active",
-      rating: 1.6,
-      instances: 1,
-      url: "https://animekhor.org/"
     }
   ];
 
@@ -462,7 +438,11 @@ const AnimeStreaming = ({ onBack, onSelectSite }) => {
                   className="access-site-btn"
                   onClick={(e) => {
                     e.stopPropagation();
-                    onSelectSite(site);
+                    if (site.url) {
+                      window.open(site.url, '_blank', 'noopener,noreferrer');
+                    } else {
+                      onSelectSite(site);
+                    }
                   }}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}

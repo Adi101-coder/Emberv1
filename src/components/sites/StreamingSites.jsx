@@ -8,18 +8,6 @@ const StreamingSites = ({ onBack, onSelectSite }) => {
 
   const streamingSites = [
     {
-      id: "cineby",
-      name: "CineBy",
-      logo: "🎬",
-      description: "Movie streaming platform with extensive library",
-      category: "premium",
-      features: ["Movies", "TV Shows", "HD Quality", "Multiple Genres"],
-      status: "active",
-      rating: 4.5,
-      instances: 1,
-      url: "https://www.cineby.app/"
-    },
-    {
       id: "fmovies",
       name: "FMovies",
       logo: "🎭",
@@ -104,18 +92,6 @@ const StreamingSites = ({ onBack, onSelectSite }) => {
       url: "https://vidjoy.pro/"
     },
     {
-      id: "catflix",
-      name: "CatFlix",
-      logo: "🐱",
-      description: "Cat-themed streaming platform with diverse content",
-      category: "standard",
-      features: ["Diverse Content", "Cat Theme", "HD Quality", "Entertainment"],
-      status: "active",
-      rating: 4.1,
-      instances: 1,
-      url: "https://catflix.su/"
-    },
-    {
       id: "cinego",
       name: "CineGo",
       logo: "🎬",
@@ -179,7 +155,6 @@ const StreamingSites = ({ onBack, onSelectSite }) => {
             onChange={(e) => setSearchQuery(e.target.value)}
             className="search-input"
           />
-          <span className="search-icon">🔍</span>
         </div>
         
         <div className="category-filters">

@@ -191,7 +191,6 @@ const DramaStreaming = ({ onBack, onSelectSite }) => {
             onChange={(e) => setSearchQuery(e.target.value)}
             className="search-input"
           />
-          <span className="search-icon">🔍</span>
         </div>
         
         <div className="category-filters">
@@ -278,7 +277,11 @@ const DramaStreaming = ({ onBack, onSelectSite }) => {
                   className="access-site-btn"
                   onClick={(e) => {
                     e.stopPropagation();
-                    onSelectSite(site);
+                    if (site.url) {
+                      window.open(site.url, '_blank', 'noopener,noreferrer');
+                    } else {
+                      onSelectSite(site);
+                    }
                   }}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}

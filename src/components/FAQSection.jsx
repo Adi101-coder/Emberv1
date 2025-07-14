@@ -18,11 +18,6 @@ const faqs = [
       "Yes! Ember is 100% free to use. There are no subscriptions, no hidden charges, and no credit card required."
   },
   {
-    question: "What devices can I use to watch?",
-    answer:
-      "You can enjoy Ember on your smartphone, tablet, laptop, desktop, and smart TV. Our platform is designed for seamless streaming everywhere."
-  },
-  {
     question: "Is there an app for Ember?",
     answer:
       "Currently, Ember is available as a web app. You can access it from any modern browser. Stay tuned for future app releases!"

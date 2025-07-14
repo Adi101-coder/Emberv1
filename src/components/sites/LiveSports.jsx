@@ -152,16 +152,16 @@ const LiveSports = ({ onBack, onSelectSite }) => {
       url: "https://720pstream.nu"
     },
     {
-      id: "crichd",
-      name: "CricHD",
-      description: "Cricket streaming with multiple instances and HD quality",
+      id: "cricketdrew",
+      name: "Watch Cricket Live",
+      description: "Best source for live cricket streaming (IND vs ENG Test Match and more)",
       logo: "🏏",
       category: "cricket",
       status: "active",
-      rating: 4.4,
-      instances: 3,
-      features: ["Cricket Focus", "Live Events", "Multiple Instances", "HD Quality"],
-      url: "https://crichd.at"
+      rating: 4.7,
+      instances: 1,
+      features: ["Cricket", "Live Events", "HD Quality", "Test Match"],
+      url: "https://drew.ihwqfinalq6k1tree.shop/"
     },
     {
       id: "soccerdoge",
@@ -366,18 +366,6 @@ const LiveSports = ({ onBack, onSelectSite }) => {
       instances: 1,
       features: ["Boxing Focus", "Live Events", "Aggregator", "HD Quality"],
       url: "https://boxing-100.com"
-    },
-    {
-      id: "crichd2",
-      name: "CricHD",
-      description: "Cricket / Aggregator - Cricket streaming platform",
-      logo: "🏏",
-      category: "cricket",
-      status: "active",
-      rating: 4.5,
-      instances: 1,
-      features: ["Cricket Focus", "Live Events", "Aggregator", "HD Quality"],
-      url: "https://crichd.com"
     }
   ];
 

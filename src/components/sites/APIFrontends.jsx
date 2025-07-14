@@ -92,18 +92,6 @@ const APIFrontends = ({ onBack, onSelectSite }) => {
       url: "https://maxflix.top/"
     },
     {
-      id: "alienflix",
-      name: "AlienFlix",
-      logo: "👽",
-      description: "Movies / TV / Anime",
-      category: "standard",
-      features: ["Movies", "TV", "Anime"],
-      status: "active",
-      rating: 3.5,
-      instances: 2,
-      url: "https://alienflix.net/"
-    },
-    {
       id: "wooflix",
       name: "Wooflix",
       logo: "🐕",
@@ -114,18 +102,6 @@ const APIFrontends = ({ onBack, onSelectSite }) => {
       rating: 3.2,
       instances: 1,
       url: "https://www.wooflixtv.co/"
-    },
-    {
-      id: "arabflix",
-      name: "Arabflix",
-      logo: "🌙",
-      description: "Movies / TV / Anime",
-      category: "standard",
-      features: ["Movies", "TV", "Anime"],
-      status: "active",
-      rating: 3.1,
-      instances: 1,
-      url: "https://www.arabiflix.com/"
     },
     {
       id: "yampi",
@@ -191,7 +167,6 @@ const APIFrontends = ({ onBack, onSelectSite }) => {
             onChange={(e) => setSearchQuery(e.target.value)}
             className="search-input"
           />
-          <span className="search-icon">🔍</span>
         </div>
         
         <div className="category-filters">

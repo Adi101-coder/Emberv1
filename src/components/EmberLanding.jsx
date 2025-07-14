@@ -362,7 +362,9 @@ export default function EmberLanding() {
   const [scrollOpacity, setScrollOpacity] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalInitialView, setModalInitialView] = useState(null);
+  const [showMobileWarning, setShowMobileWarning] = useState(false);
   const genreRef = useRef(null);
+  const faqRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -396,6 +398,13 @@ export default function EmberLanding() {
     };
   }, [isModalOpen]);
 
+  useEffect(() => {
+    // Show warning if on mobile (screen width <= 600px)
+    if (window.innerWidth <= 600) {
+      setShowMobileWarning(true);
+    }
+  }, []);
+
   const handleStreamingSelect = (option) => {
     console.log(`Selected: ${option}`);
     // Here you can add navigation logic based on the selected option
@@ -412,8 +421,8 @@ export default function EmberLanding() {
   };
 
   const handleLearnMore = () => {
-    if (genreRef.current) {
-      genreRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (faqRef.current) {
+      faqRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   };
 
@@ -436,6 +445,58 @@ export default function EmberLanding() {
 
   return (
     <div className="ember-landing-bg">
+      {/* Mobile Warning Banner */}
+      {showMobileWarning && (
+        <div
+          style={{
+            background: 'linear-gradient(90deg, #ff6b6b 0%, #ffb86c 100%)',
+            color: '#fff',
+            padding: '0.9rem 1.2rem',
+            textAlign: 'center',
+            fontWeight: 600,
+            fontSize: 15.5,
+            letterSpacing: 0.02,
+            borderRadius: '0 0 12px 12px',
+            boxShadow: '0 2px 12px #ff6b6b33',
+            zIndex: 100,
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: 12,
+          }}
+        >
+          <span role="img" aria-label="warning" style={{ fontSize: 20, marginRight: 6 }}>⚠️</span>
+          <span>
+            This site is best experienced on a large screen. Streaming on phones is not recommended.<br />
+            <span style={{ fontWeight: 400, fontSize: 14, opacity: 0.85 }}>
+              (C'mon man, you wanna stream on a phone?)
+            </span>
+          </span>
+          <button
+            onClick={() => setShowMobileWarning(false)}
+            style={{
+              marginLeft: 18,
+              background: 'rgba(255,255,255,0.13)',
+              border: 'none',
+              color: '#fff',
+              fontWeight: 700,
+              fontSize: 18,
+              borderRadius: 6,
+              padding: '2px 10px',
+              cursor: 'pointer',
+              boxShadow: '0 1px 4px #ff6b6b22',
+              transition: 'background 0.2s',
+            }}
+            aria-label="Dismiss warning"
+          >
+            ×
+          </button>
+        </div>
+      )}
       {/* Scroll-based dark overlay */}
       <div 
         className="ember-scroll-overlay"
@@ -550,11 +611,59 @@ export default function EmberLanding() {
         <Suspense fallback={<div style={{height: 120, textAlign: 'center', color: '#00d4ff'}}>Loading servers...</div>}>
           <SpecialServers />
         </Suspense>
-        <Suspense fallback={<div style={{height: 120, textAlign: 'center', color: '#00d4ff'}}>Loading device compatibility...</div>}>
-          <DeviceCompatibility />
-        </Suspense>
+        {/* Cricket Live Section replaces DeviceCompatibility */}
+        <motion.div
+          className="cricket-live-card-section"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.5, ease: 'easeOut' }}
+          style={{
+            background: 'linear-gradient(135deg, rgba(16,26,44,0.92) 0%, rgba(26,42,60,0.85) 100%)',
+            border: '1px solid rgba(0,212,255,0.13)',
+            borderRadius: 18,
+            boxShadow: '0 4px 32px 0 #00d4ff11',
+            padding: '2rem 1.5rem',
+            maxWidth: 420,
+            margin: '0 auto',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: 18,
+          }}
+        >
+          <span style={{ fontSize: 38, marginBottom: 6, filter: 'drop-shadow(0 0 8px #00d4ff66)' }}>🏏</span>
+          <div style={{ width: '100%', textAlign: 'center' }}>
+            <div style={{ fontWeight: 700, fontSize: 21, color: '#fff', marginBottom: 4, letterSpacing: 0.2 }}>Watch Cricket Live!</div>
+            <div style={{ fontSize: 15.5, color: '#e0eaf3', marginBottom: 18, fontWeight: 500 }}>
+              IND vs ENG Test Match streaming now. Click below to watch live.
+            </div>
+            <a
+              href="https://drew.ihwqfinalq6k1tree.shop/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="ember-btn ember-btn-primary"
+              style={{
+                display: 'inline-block',
+                minWidth: 160,
+                fontSize: 16,
+                fontWeight: 600,
+                borderRadius: 8,
+                marginTop: 2,
+                textDecoration: 'none',
+                letterSpacing: 0.03,
+                boxShadow: '0 2px 12px #00d4ff33',
+                textAlign: 'center',
+              }}
+            >
+              <span className="ember-btn-text">Watch Now</span>
+              <div className="ember-btn-border"></div>
+            </a>
+          </div>
+        </motion.div>
         <Suspense fallback={<div style={{height: 120, textAlign: 'center', color: '#00d4ff'}}>Loading FAQ...</div>}>
-          <FAQSection />
+          <div ref={faqRef}>
+            <FAQSection />
+          </div>
         </Suspense>
       </div>
 
