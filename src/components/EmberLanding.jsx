@@ -437,9 +437,9 @@ export default function EmberLanding() {
 
       {/* Header */}
       <header className="ember-header">
-        <div className="ember-nav ember-nav-left">SOFTWARE</div>
-        <div className="ember-nav ember-nav-center">LOGO</div>
-        <div className="ember-nav ember-nav-right">STREAMING</div>
+        <div className="ember-nav ember-nav-left">HOME</div>
+        <div className="ember-nav ember-nav-center">EMBER</div>
+        <div className="ember-nav ember-nav-right">BROWSE</div>
       </header>
 
       {/* Hero Section */}
@@ -534,11 +534,11 @@ export default function EmberLanding() {
 
       {/* Footer */}
       <footer className="ember-footer">
-        <div className="ember-footer-left">CUSTOM STREAMING PLATFORM</div>
+        <div className="ember-footer-left">FREE MOVIES & TV</div>
         <div className="ember-footer-center">
           <EmberIcon className="ember-svg-icon ember-svg-footer" />
         </div>
-        <div className="ember-footer-right">TECHNOLOGY & EXPERTISE</div>
+        <div className="ember-footer-right">NO SIGNUP NEEDED</div>
       </footer>
 
       {/* Streaming Options Modal */}
